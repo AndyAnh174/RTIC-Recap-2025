@@ -1,0 +1,185 @@
+📘 PLAN – TIMELINE CUỐI NĂM CLB
+1️⃣ Mục tiêu
+
+Tổng kết hoạt động nổi bật trong năm
+
+Thể hiện dấu ấn – giá trị – kết quả
+
+Giao diện clean, dễ đọc, trang nghiêm
+
+2️⃣ Đối tượng xem
+
+Thành viên CLB
+
+Ban chủ nhiệm
+
+Truyền thông / tuyển thành viên năm sau
+
+3️⃣ Thông điệp chính
+
+“Một năm – những dấu ấn đáng nhớ”
+CLB không làm nhiều, nhưng làm ra kết quả rõ ràng.
+
+4️⃣ Cấu trúc trang (1 trang – ngắn)
+🔹 4.1 Hero Section
+
+Tiêu đề lớn
+
+Sub-title 1 dòng
+
+Năm hoạt động (2025)
+
+Ví dụ:
+
+Timeline Hoạt Động CLB 2025
+Một năm – Những dấu ấn nổi bật
+
+🔹 4.2 Timeline Section (trọng tâm)
+
+Kiểu: Vertical Timeline (dọc)
+
+Mỗi mốc gồm:
+
+Thời gian
+
+Tên project
+
+2–3 dấu ấn nổi bật
+
+Số lượng: 4–6 project tiêu biểu
+
+🔹 4.3 Closing Section
+
+Logo CLB
+
+Câu kết ngắn
+
+Ví dụ:
+
+Thank you for being part of our journey.
+
+5️⃣ Thiết kế màu sắc (tím – xanh nhạt)
+🎨 Color Palette (clean & dịu)
+Vai trò	Màu
+Background	#F8F9FF
+Primary (tím)	#6D5DF6
+Secondary (xanh nhạt)	#A5D8FF
+Text chính	#1F2937
+Text phụ	#6B7280
+Border / line	#E5E7EB
+
+👉 Timeline line dùng xanh nhạt
+👉 Project title dùng tím
+
+6️⃣ Typography
+
+Font: Inter / Geist / SF Pro
+
+Title: semibold
+
+Body: regular
+
+Không dùng font trang trí
+
+7️⃣ Component cần có
+
+Timeline
+
+TimelineItem
+
+ProjectCard
+
+Badge (Highlight)
+
+Divider
+
+8️⃣ Animation (rất nhẹ)
+
+Fade-in khi scroll
+
+Delay nhỏ giữa các project
+
+Không zoom, không parallax
+
+9️⃣ Dữ liệu (format chuẩn)
+const projects = [
+  {
+    time: "30/06/2025",
+    title: "WebHub - SRS v1.0",
+    highlights: [
+      "Hoàn thiện 19 trang đặc tả tài liệu (SRS)",
+      "Chốt kiến trúc Hệ thống & DB",
+      "Tái định hướng CLB sang Research"
+    ]
+  },
+  {
+    time: "07/2025",
+    title: "IT Challenge 2025",
+    highlights: [
+      "Minigame trắc nghiệm công nghệ",
+      "Hệ thống Quiz real-time cho SV"
+    ]
+  },
+  {
+    time: "25/09/2025",
+    title: "ATHENA-HD Hackathon",
+    highlights: [
+      "Triển khai giải pháp Hackathon",
+      "Tích hợp Blockchain & Payment"
+    ]
+  },
+  {
+    time: "09-10/2025",
+    title: "Tuyển Gen 2 - Welcome Newbie",
+    highlights: [
+      "Chiến dịch tuyển thành viên lớn nhất",
+      "Xây dựng đội ngũ kế thừa RTIC"
+    ]
+  },
+  {
+    time: "20/11/2025",
+    title: "Wellness HCMUTE",
+    highlights: [
+      "Hệ thống trắc nghiệm tâm lý SV",
+      "Tích hợp AI Chatbot (RAG/Gemini)"
+    ]
+  },
+  {
+    time: "12/2025",
+    title: "RTIC Recap 2025",
+    highlights: [
+      "Xây dựng Timeline Website",
+      "Tổng kết hành trình 1 năm hoạt động"
+    ]
+  }
+]
+
+🔟 Công nghệ đề xuất
+
+Next.js
+
+Tailwind CSS
+
+shadcn/ui
+
+Framer Motion
+
+Deploy: Vercel (public)
+
+✅ Tiêu chí hoàn thành
+
+Load nhanh
+
+Nhìn là hiểu ngay thành quả CLB
+
+Dùng tốt cho: web + slide + link truyền thông
+
+Nếu bạn muốn, bước tiếp theo mình có thể:
+
+🔹 Viết Timeline component code
+
+🔹 Dựng mock content theo CLB của bạn
+
+🔹 Setup repo + deploy sẵn (public link)
+
+👉 Bạn muốn đi tiếp code hay nội dung chữ cho từng project trước?
