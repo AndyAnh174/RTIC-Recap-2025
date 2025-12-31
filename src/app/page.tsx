@@ -5,6 +5,7 @@ import { Timeline } from "@/components/Timeline";
 import { ClubHighlights } from "@/components/ClubHighlights";
 import { RTIC_2025_DATA } from "@/data/rtic-2025";
 import { Sparkles, ArrowDown, ExternalLink, Github, Facebook } from "lucide-react";
+import Image from "next/image";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -15,18 +16,25 @@ export default function Home() {
   });
 
   return (
-    <main className="min-h-screen selection:bg-primary/20 bg-[#F8F9FF] overflow-x-hidden">
+    <main className="min-h-screen selection:bg-primary/20 bg-bg-main overflow-x-hidden">
       {/* Progress Bar */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-1.5 bg-primary origin-left z-50 rounded-r-full"
         style={{ scaleX }}
       />
 
-      {/* Decorative background blobs */}
-      <div className="fixed inset-0 overflow-hidden -z-10">
-        <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-primary/5 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-secondary/10 rounded-full blur-[100px]" />
-        <div className="absolute top-[30%] right-[10%] w-[20%] h-[20%] bg-primary/3 rounded-full blur-[80px]" />
+      {/* Background - Tech Grid */}
+      <div className="fixed inset-0 overflow-hidden -z-10 bg-bg-main">
+        {/* Grid Pattern using Primary Color - Subtler for brand color */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--color-primary)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-primary)_1px,transparent_1px)] opacity-[0.08] bg-[size:40px_40px]" />
+
+        {/* Vampires Mask (Vignette) - Adjusted for new bg */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_800px_at_50%_200px,rgba(248,250,252,0),rgba(248,250,252,0.9))]" />
+
+        {/* Blobs */}
+        <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-primary/20 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-secondary/30 rounded-full blur-[100px]" />
+        <div className="absolute top-[30%] right-[10%] w-[20%] h-[20%] bg-primary/10 rounded-full blur-[80px]" />
       </div>
 
       {/* Hero Section */}
@@ -36,10 +44,15 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, type: "spring" }}
-            className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white shadow-xl shadow-primary/5 text-primary text-sm font-black mb-12 border border-primary/10 tracking-widest uppercase"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white shadow-xl shadow-primary/5 text-primary text-sm font-black mb-12 border border-primary/10 transition-transform hover:scale-105"
           >
-            <Sparkles className="w-4 h-4 animate-spin-slow" />
-            <span>CLB RTIC 2025 RECAP</span>
+            <Image
+              src="/media/LOGO RTIC.png"
+              alt="RTIC Logo"
+              width={240}
+              height={80}
+              className="h-20 w-auto object-contain"
+            />
           </motion.div>
 
           <motion.h1
@@ -49,7 +62,7 @@ export default function Home() {
             className="text-6xl md:text-9xl font-black text-text-main tracking-tighter mb-8 leading-[0.9]"
           >
             Hành trình <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary/80 to-secondary animate-gradient-x">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent animate-gradient-x">
               {RTIC_2025_DATA.clubInfo.name}
             </span>
           </motion.h1>
@@ -60,35 +73,10 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="text-xl md:text-2xl text-text-muted max-w-3xl mx-auto mb-16 leading-relaxed font-medium"
           >
-            Năm 2025 – <span className="text-text-main font-bold">"{RTIC_2025_DATA.clubInfo.vision}"</span>.
-            Nhìn lại những dấu ấn rực rỡ và nỗ lực bứt phá không ngừng nghỉ của cộng đồng nghiên cứu công nghệ.
+            Năm 2025 - Khởi đầu của hành trình <span className="text-text-main font-bold">"Beyond Limits, Into Innovation"</span>
           </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex flex-wrap justify-center gap-12 md:gap-24 py-12 px-8 rounded-3xl bg-white/50 backdrop-blur-sm border border-white shadow-2xl shadow-primary/5"
-          >
-            <div className="flex flex-col items-center">
-              <span className="text-5xl font-black text-primary tracking-tighter">
-                {RTIC_2025_DATA.clubInfo.stats.projects.toString().padStart(2, '0')}
-              </span>
-              <span className="text-xs font-black text-text-muted/60 uppercase tracking-widest mt-2">Dự án lớn</span>
-            </div>
-            <div className="flex flex-col items-center">
-              <span className="text-5xl font-black text-primary tracking-tighter">
-                {RTIC_2025_DATA.clubInfo.stats.months.toString().padStart(2, '0')}
-              </span>
-              <span className="text-xs font-black text-text-muted/60 uppercase tracking-widest mt-2">Tháng nỗ lực</span>
-            </div>
-            <div className="flex flex-col items-center">
-              <span className="text-5xl font-black text-primary tracking-tighter">
-                {RTIC_2025_DATA.clubInfo.stats.impact}
-              </span>
-              <span className="text-xs font-black text-text-muted/60 uppercase tracking-widest mt-2">Đam mê</span>
-            </div>
-          </motion.div>
+
 
           <motion.div
             initial={{ opacity: 0 }}
@@ -111,7 +99,7 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-6xl font-black text-text-main mb-6 tracking-tight">Timeline Hoạt Động</h2>
-            <p className="text-text-muted max-w-xl mx-auto font-medium">Hành trình xuyên suốt 12 tháng với những cột mốc định hình nên bản sắc RTIC.</p>
+
             <div className="w-32 h-2 bg-primary mx-auto rounded-full mt-8 shadow-glow" />
           </motion.div>
         </div>
@@ -130,15 +118,21 @@ export default function Home() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="max-w-3xl mx-auto p-12 md:p-20 rounded-[3rem] bg-gradient-to-br from-primary to-primary/80 text-white shadow-3xl shadow-primary/30 relative overflow-hidden"
+          className="max-w-3xl mx-auto p-12 md:p-20 rounded-[3rem] bg-gradient-to-br from-primary via-primary/90 to-primary/80 text-white shadow-3xl shadow-primary/30 relative overflow-hidden"
         >
           {/* Decorative icons in bg */}
           <div className="absolute top-10 left-10 opacity-10 rotate-12"><Rocket size={100} /></div>
           <div className="absolute bottom-10 right-10 opacity-10 -rotate-12"><Sparkles size={100} /></div>
 
           <div className="relative z-10">
-            <div className="w-24 h-24 bg-white/20 backdrop-blur-md rounded-3xl mx-auto mb-10 flex items-center justify-center shadow-inner">
-              <span className="text-white font-black text-4xl">R</span>
+            <div className="w-36 h-36 bg-white/10 backdrop-blur-md rounded-[2rem] mx-auto mb-10 flex items-center justify-center shadow-inner p-6 border border-white/20">
+              <Image
+                src="/media/LOGO RTIC.png"
+                alt="RTIC Logo"
+                width={120}
+                height={120}
+                className="w-full h-full object-contain"
+              />
             </div>
             <h2 className="text-4xl md:text-6xl font-black mb-8 tracking-tight">Thank you for being <br /> part of our journey</h2>
             <p className="text-white/80 text-lg md:text-xl font-medium mb-16 leading-relaxed max-w-xl mx-auto">
@@ -155,7 +149,7 @@ export default function Home() {
                 Website CLB <ExternalLink size={16} />
               </a>
               <a
-                href="https://facebook.com/hcmute.rtic"
+                href="https://www.facebook.com/hcmute.rtic/"
                 target="_blank"
                 className="flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-white/20 transition-all"
               >
@@ -169,16 +163,24 @@ export default function Home() {
       {/* Footer */}
       <footer className="py-12 px-4">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 pt-12 border-t border-border-main/50">
-          <div className="flex items-center gap-4">
-            <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center font-black text-primary">R</div>
-            <span className="text-sm font-black text-text-main opacity-80 uppercase tracking-widest">HCMUTE RTIC</span>
-          </div>
+          <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="flex items-center gap-4 group">
+            <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center p-2.5 group-hover:bg-primary/20 transition-colors">
+              <Image
+                src="/media/LOGO RTIC.png"
+                alt="RTIC Logo"
+                width={60}
+                height={60}
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <span className="text-sm font-black text-text-main opacity-80 uppercase tracking-widest group-hover:text-primary transition-colors">HCMUTE RTIC</span>
+          </a>
           <p className="text-xs text-text-muted font-bold tracking-wider">
             © 2025 RESEARCH ON TECHNOLOGY AND INNOVATION CLUB. ALL RIGHTS RESERVED.
           </p>
           <div className="flex gap-4">
-            <a href="#" className="p-2 bg-white rounded-full border border-border-main hover:text-primary transition-colors"><Github size={18} /></a>
-            <a href="#" className="p-2 bg-white rounded-full border border-border-main hover:text-primary transition-colors"><Facebook size={18} /></a>
+            <a href="https://github.com/HCMUTE-RTIC" target="_blank" rel="noopener noreferrer" className="p-2 bg-white rounded-full border border-border-main hover:text-primary transition-colors shadow-sm"><Github size={18} /></a>
+            <a href="https://www.facebook.com/hcmute.rtic/" target="_blank" rel="noopener noreferrer" className="p-2 bg-white rounded-full border border-border-main hover:text-primary transition-colors shadow-sm"><Facebook size={18} /></a>
           </div>
         </div>
       </footer>

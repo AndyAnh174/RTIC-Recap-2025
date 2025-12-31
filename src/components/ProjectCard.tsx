@@ -23,7 +23,8 @@ export function ProjectCard({ time, title, shortDesc, highlights, techStack, ima
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             viewport={{ once: true }}
-            className="group relative bg-white/70 backdrop-blur-xl rounded-3xl p-6 shadow-sm border border-border-main hover:border-primary/40 transition-all hover:shadow-2xl hover:shadow-primary/10 overflow-hidden flex flex-col h-full"
+            className="group relative bg-white/70 backdrop-blur-xl rounded-3xl p-6 shadow-sm border border-border-main hover:border-primary/40 transition-all hover:shadow-glow/20 overflow-hidden flex flex-col h-full"
+
         >
             {/* Decorative element */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-primary/10 transition-colors" />
@@ -39,12 +40,12 @@ export function ProjectCard({ time, title, shortDesc, highlights, techStack, ima
                 </div>
 
                 {image && (
-                    <div className="relative w-full h-48 rounded-2xl overflow-hidden border border-border-main/50 group-hover:border-primary/20 transition-colors">
+                    <div className="relative w-full h-64 rounded-2xl overflow-hidden border border-border-main/50 group-hover:border-primary/20 transition-colors bg-slate-50/50">
                         <Image
                             src={image}
                             alt={title}
                             fill
-                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                            className="object-contain group-hover:scale-105 transition-transform duration-500 p-2"
                             sizes="(max-width: 768px) 100vw, 400px"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -60,14 +61,18 @@ export function ProjectCard({ time, title, shortDesc, highlights, techStack, ima
                 </div>
 
                 <div className="space-y-3 pt-4 border-t border-border-main/60 flex-grow">
-                    {highlights.map((highlight, idx) => (
-                        <div key={idx} className="flex items-start gap-3 text-sm text-text-muted/90">
-                            <div className="mt-1 flex-shrink-0">
-                                <CheckCircle2 className="w-4 h-4 text-primary/50" />
+                    {highlights?.length > 0 ? (
+                        highlights.map((highlight, idx) => (
+                            <div key={idx} className="flex items-start gap-3 text-sm text-text-muted/90">
+                                <div className="mt-1 flex-shrink-0">
+                                    <CheckCircle2 className="w-4 h-4 text-primary/50" />
+                                </div>
+                                <span className="font-medium">{highlight}</span>
                             </div>
-                            <span className="font-medium">{highlight}</span>
-                        </div>
-                    ))}
+                        ))
+                    ) : (
+                        <p className="text-sm text-text-muted italic">Đang cập nhật...</p>
+                    )}
                 </div>
 
                 {link && (

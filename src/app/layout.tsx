@@ -16,6 +16,11 @@ export const metadata: Metadata = {
   title: "RTIC Recap 2025 | Hành trình đổi mới sáng tạo",
   description: "Nhìn lại những cột mốc rực rỡ và các dự án công nghệ tiêu biểu của CLB Nghiên cứu Công nghệ và Đổi mới sáng tạo (RTIC) trong năm 2025.",
   keywords: ["RTIC", "HCMUTE", "Recap 2025", "Technology", "Innovation", "Club"],
+  icons: {
+    icon: "/media/LOGO RTIC.png",
+    shortcut: "/media/LOGO RTIC.png",
+    apple: "/media/LOGO RTIC.png",
+  },
 };
 
 export default function RootLayout({
@@ -24,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi" className="scroll-smooth">
+    <html lang="vi" className="scroll-smooth" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased selection:bg-primary/30 min-h-screen`}
       >
