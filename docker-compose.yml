@@ -1,0 +1,37 @@
+# ==========================================
+# RTIC Recap 2025 - Docker Compose
+# Frontend Only (No Backend)
+# ==========================================
+
+services:
+  # ========================================
+  # Next.js Frontend Application
+  # ========================================
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rtic-recap-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+
+  # ==========================================
+  # Development with hot-reload (optional)
+  # ==========================================
+  dev:
+    image: node:20-alpine
+    container_name: rtic-recap-dev
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "8123:3000"
+    environment:
+      - NODE_ENV=development
+    command: sh -c "corepack enable && corepack prepare pnpm@latest --activate && pnpm install && pnpm dev"
+    profiles:
+      - dev
